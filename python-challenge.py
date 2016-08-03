@@ -71,10 +71,7 @@ def count_letters(value):
 
 
 
-for product in products:
-    for customer in customers:
-
-        #This function takes in an inut string and returns the number of consonants contained within it.
+#This function takes in an inut string and returns the number of consonants contained within it.
 def vcv(x, y):
     if (len(y) % 2 == 0):
         vowels = "aeiouy"
@@ -83,8 +80,8 @@ def vcv(x, y):
         for i in x:
             if i in vowels:
                 count +=1
+        score = count * 1.5
 
-        return count * 1.5
     else:
         consonants = "bcdfghjklmnpqrstvwxz"
         count = 0
@@ -93,7 +90,11 @@ def vcv(x, y):
             if i in consonants:
                 count +=1
 
-        return count
+        score = count
+
+    if hcf(x,y) > 1: score = score * 1.5
+
+    return score
 
 #This function takes in an inut string and returns the number of vowels contained within it.
 def count_vowels(value):
@@ -115,7 +116,7 @@ def count_vowels(value):
 
 
 
-path = '/Shared/Projects/python-challenge/customer_products.txt'
+path = "customer_products.txt"
 
 #set path to find the discount list.  Set Path to:
 # /Shared/Projects/python-challenge/customer_products.txt
@@ -126,31 +127,28 @@ def product_assignments(path):
 # open the file and put in a while loop
 file = open(path, 'r')
 counter = 0;
+text = file.readlines()
 
-text = file.readLines()
 counter += counter
 
 
 while (len(text) > 0):
 # Split each line by the semicolon to sepaate out products from customers
- split = text.split(";")
+    print text
+    split = text[0].split(";")
 
 # Split all collected customers]9
- customers = split[0].split(",")
- print customers
+    customers = split[0].split(",")
+    print customers
 
- products = split[1].split(",")
- print products
+    products = split[1].split(",")
+    print products
 
+    customer_values = dict((a, len(a)) for a in customers)
 
- #Step One:
-
-
- customer_values = dict((a, len(a)) for a in customers)
-
- print customer_values.values()
- set_ss(customers, products)
- text = file.readline()
+    print customer_values.values()
+    set_ss(customers, products)
+    text = file.readline()
 
  # Check if e3. If the number of letters in the product's name share s any commo factors (besides 1) with
  # the

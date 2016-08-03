@@ -1,4 +1,19 @@
 
+from itertools import product
+from string import whitespace
+
+#1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y) in the customer's name multiplied by 1.5.
+#2. If the number of letters in the product's name is odd then the SS is the number of consonants in the customer's name.
+#3. If the number of letters in the product's name shares any common factors (besides 1) with the number of letters in the customer's name then the SS is multiplied by 1.5.
+
+# Assuming file has following 5 lines
+# This is 1st line
+# This is 2nd line
+# This is 3rd line
+# This is 4th line
+# This is 5th line
+
+
 # collect and count customers and store the variables as collections where the count of each charecters name is stored
 # as a pair...
 def set_ss(customers, products):
@@ -70,11 +85,6 @@ def count_letters(value):
     return len(value)
 
 
-
-for product in products:
-    for customer in customers:
-
-        #This function takes in an inut string and returns the number of consonants contained within it.
 def vcv(x, y):
     if (len(y) % 2 == 0):
         vowels = "aeiouy"
@@ -125,36 +135,12 @@ def product_assignments(path):
  from functools import reduce
 # open the file and put in a while loop
 file = open(path, 'r')
-counter = 0;
 
-text = file.readLines()
-counter += counter
+for line in file.readlines() :
+    items = line.split(";")
+    customers = items[0].translate(None, whitespace).split(",")
+    products = items[1].translate(None, whitespace).split(",")
+    campaigns = product(products, customers)
 
-
-while (len(text) > 0):
-# Split each line by the semicolon to sepaate out products from customers
- split = text.split(";")
-
-# Split all collected customers]9
- customers = split[0].split(",")
- print customers
-
- products = split[1].split(",")
- print products
-
-
- #Step One:
-
-
- customer_values = dict((a, len(a)) for a in customers)
-
- print customer_values.values()
- set_ss(customers, products)
- text = file.readline()
-
- # Check if e3. If the number of letters in the product's name share s any commo factors (besides 1) with
- # the
- # number of letters in
- # the customer's name then the SS is multiplied by 1.5.
-
-#1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y2) in the customer's name multiplied by 1.5.
+    for campaign in campaigns:
+        print campaign

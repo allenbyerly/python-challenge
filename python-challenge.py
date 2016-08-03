@@ -1,39 +1,15 @@
-import re
-path = "customer_products.txt"
-file = open(path, 'r')
-text = file.readlines()
-
-first_set, second_set, third_set = text[0],text[1],text[2]
-
-print first_set
-print second_set
-print third_set
-
-def optimize(n):
-	results = []
-	n = n.strip("\n")
-	n = re.sub("[\s+]", "", n)
-	customers = n.split(";")[0].split(",")
-	products = n.split(";")[1].split(",")
-	return [customers, products]
-
-first_set = optimize(first_set)
-print first_set
-second_set = optimize(second_set)
-print second_set
-third_set = optimize(third_set)
-print third_set
-
-def map_set(n):
 
 
-print "-----"
+#1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y) in the customer's name multiplied by 1.5.
+#2. If the number of letters in the product's name is odd then the SS is the number of consonants in the customer's name.
+#3. If the number of letters in the product's name shares any common factors (besides 1) with the number of letters in the customer's name then the SS is multiplied by 1.5.
 
-
-def testScore
-
-
-
+# Assuming file has following 5 lines
+# This is 1st line
+# This is 2nd line
+# This is 3rd line
+# This is 4th line
+# This is 5th line
 
 
 # collect and count customers and store the variables as collections where the count of each charecters name is stored
@@ -106,8 +82,6 @@ def is_even(value):
 def count_letters(value):
     return len(value)
 
-
-
 #This function takes in an inut string and returns the number of consonants contained within it.
 def vcv(x, y):
     if (len(y) % 2 == 0):
@@ -129,8 +103,7 @@ def vcv(x, y):
 
         score = count
 
-    if hcf(x,y) > 1: score = score * 1.5
-
+    if hcf(len(x),len(y)) > 1: score = score * 1.5
     return score
 
 #This function takes in an inut string and returns the number of vowels contained within it.
@@ -151,45 +124,113 @@ def count_vowels(value):
     # available product.  Then check all other available products for a higher
     # score.customer will check every available product by first checking and selecting the first avail  select the highest score
 
-
-
-path = "customer_products.txt"
-
+print "pre test"
 #set path to find the discount list.  Set Path to:
 # /Shared/Projects/python-challenge/customer_products.txt
-def product_assignments(path):
  #   from collections import deque
- from collections import deque
- from functools import reduce
+print "start test"
+from collections import deque
+from functools import reduce
+import re
+from itertools import product
+from string import whitespace
 # open the file and put in a while loop
+path = "customer_products.txt"
+
 file = open(path, 'r')
 counter = 0;
 text = file.readlines()
 
-counter += counter
+first_set, second_set, third_set = text[0],text[1],text[2]
+
+print first_set
+print second_set
+print third_set
+def get_sscore(campaign):
+    #for campaign in campaigns
+    print "getting score of " + str(vcv(campaign[0],campaign[1])) + " for [" + campaign[0] + " , " + campaign[1]# campaign
+    return vcv(campaign[0],campaign[1])
+
+def my_product(dicts):
+    return (dict(izip(dicts, x)) for x in product(*dicts.itervalues()))
 
 
-while (len(text) > 0):
-# Split each line by the semicolon to sepaate out products from customers
-    print text
-    split = text[0].split(";")
+def get_sscorex(customer, products):
+    #for campaign in campaigns
+    scores = []
+    print "GENERATING scores for " + customer
+    pools = map(tuple, args) * kwds.get('repeat', 1)
+    ss_capaigns = map(get_sscore, campaigns)
+    result = [[]]
+    for product in products:
+        result = [x+[y] for x in result for y in product]
+    for prod in result:
+        yield tuple(prod)
 
-# Split all collected customers]9
-    customers = split[0].split(",")
-    print customers
+        scores.append(vcv(customer,product))
+        print "getting score of " + str(vcv(customer,product)) + " for " + product
+    yield scores
+    return
 
-    products = split[1].split(",")
-    print products
 
-    customer_values = dict((a, len(a)) for a in customers)
+def optimize(n):
+	results = []
+	n = n.strip("\n")
+	n = re.sub("[\s+]", "", n)
+	customers = n.split(";")[0].split(",")
+	products = n.split(";")[1].split(",")
 
-    print customer_values.values()
-    set_ss(customers, products)
-    text = file.readline()
+    # Uses the list composition to make the key value pairs over a dictionary.
 
- # Check if e3. If the number of letters in the product's name share s any commo factors (besides 1) with
- # the
- # number of letters in
- # the customer's name then the SS is multiplied by 1.5.
+        #campaignx = map(get_sscorex, products)
+    #print campaignx
+	return [customers, products]
 
-#1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y2) in the customer's name multiplied by 1.5.
+first_set = optimize(first_set)
+print first_set
+second_set = optimize(second_set)
+print second_set
+third_set = optimize(third_set)
+print third_set
+
+#counter += counter
+#customer_values = dict((a, len(a)) for a in customers)
+
+#print customer_values.values()
+#set_ss(customers, products)
+
+#text = file.readlines()
+
+file = open(path, 'r')
+counter = 0;
+
+for line in file.readlines():
+    items = line.split(";")
+    customers = items[0].translate(None, whitespace).split(",")
+    products = items[1].translate(None, whitespace).split(",")
+    campaign_options = lambda dic: [(k, v) for k,v in product(customers, products)]
+    campaigns = product(customers, products)
+    print campaign_options
+
+    ss_capaigns = map(get_sscore, campaigns)
+
+
+
+
+
+
+
+import re
+path = "customer_products.txt"
+file = open(path, 'r')
+text = file.readlines()
+
+
+
+#    def map_set(n)
+
+
+print "-----"
+
+
+#    def testScore

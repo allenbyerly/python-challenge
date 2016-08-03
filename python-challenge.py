@@ -1,3 +1,40 @@
+import re
+path = "customer_products.txt"
+file = open(path, 'r')
+text = file.readlines()
+
+first_set, second_set, third_set = text[0],text[1],text[2]
+
+print first_set
+print second_set
+print third_set
+
+def optimize(n):
+	results = []
+	n = n.strip("\n")
+	n = re.sub("[\s+]", "", n)
+	customers = n.split(";")[0].split(",")
+	products = n.split(";")[1].split(",")
+	return [customers, products]
+
+first_set = optimize(first_set)
+print first_set
+second_set = optimize(second_set)
+print second_set
+third_set = optimize(third_set)
+print third_set
+
+def map_set(n):
+
+
+print "-----"
+
+
+def testScore
+
+
+
+
 
 # collect and count customers and store the variables as collections where the count of each charecters name is stored
 # as a pair...

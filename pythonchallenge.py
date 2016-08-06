@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD:python-challenge.py
 from challenge2 import *
 
 class Customers:
@@ -86,6 +87,8 @@ class Markets:
 
 
 
+=======
+>>>>>>> 6492d047977f3c4d9c216ff6e208cc2478cd177c:pythonchallenge.py
 #1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y) in the customer's name multiplied by 1.5.
 #2. If the number of letters in the product's name is odd then the SS is the number of consonants in the customer's name.
 #3. If the number of letters in the product's name shares any common factors (besides 1) with the number of letters in the customer's name then the SS is multiplied by 1.5.
@@ -198,7 +201,31 @@ def count_vowels(value):
 
     return count
 
+def get_sscore(campaign):
+    #for campaign in campaigns
+    print "getting score of " + str(vcv(campaign[0],campaign[1])) + " for [" + campaign[0] + " , " + campaign[1]# campaign
+    return vcv(campaign[0],campaign[1])
 
+def my_product(dicts):
+    return (dict(izip(dicts, x)) for x in product(*dicts.itervalues()))
+
+
+def get_sscorex(customer, products):
+    #for campaign in campaigns
+    scores = []
+    print "GENERATING scores for " + customer
+    pools = map(tuple, args) * kwds.get('repeat', 1)
+    ss_capaigns = map(get_sscore, campaigns)
+    result = [[]]
+    for product in products:
+        result = [x+[y] for x in result for y in product]
+    for prod in result:
+        yield tuple(prod)
+
+        scores.append(vcv(customer,product))
+        print "getting score of " + str(vcv(customer,product)) + " for " + product
+    yield scores
+    return
 
 
     # For every customer iterate through every available product by the
@@ -232,33 +259,10 @@ first_set, second_set, third_set = text[0],text[1],text[2]
 print first_set
 print second_set
 print third_set
-def get_sscore(campaign):
-    #for campaign in campaigns
-    print "getting score of " + str(vcv(campaign[0],campaign[1])) + " for [" + campaign[0] + " , " + campaign[1]# campaign
-    return vcv(campaign[0],campaign[1])
-
-def my_product(dicts):
-    return (dict(izip(dicts, x)) for x in product(*dicts.itervalues()))
 
 
-def get_sscorex(customer, products):
-    #for campaign in campaigns
-    scores = []
-    print "GENERATING scores for " + customer
-    pools = map(tuple, args) * kwds.get('repeat', 1)
-    ss_capaigns = map(get_sscore, campaigns)
-    result = [[]]
-    for product in products:
-        result = [x+[y] for x in result for y in product]
-    for prod in result:
-        yield tuple(prod)
 
-        scores.append(vcv(customer,product))
-        print "getting score of " + str(vcv(customer,product)) + " for " + product
-    yield scores
-    return
-
-
+<<<<<<< HEAD:python-challenge.py
 
 
 def optimize(n):
@@ -267,20 +271,35 @@ def optimize(n):
 	n = re.sub("[\s+]", "", n)
 	customers = n.split(";")[0].split(",")
 	products = n.split(";")[1].split(",")
+=======
+>>>>>>> 6492d047977f3c4d9c216ff6e208cc2478cd177c:pythonchallenge.py
 
+def get_optimum_score(n):
+  score = 0
+  results = []
+  n = n.strip("\n")
+  n = re.sub("[\s+]", "", n)
+  customers = n.split(";")[0].split(",")
+  products = n.split(";")[1].split(",")
+  campaign_options = lambda dic: [(k, v) for k,v in product(customers, products)]
     # Uses the list composition to make the key value pairs over a dictionary.
+    #campaignx = map(get_sscorex, products)
 
-        #campaignx = map(get_sscorex, products)
+
     #print campaignx
-	return [customers, products]
 
-first_set = optimize(first_set)
+  return score
+
+first_set = get_optimum_score(first_set)
 print first_set
-second_set = optimize(second_set)
+second_set = get_optimum_score(second_set)
 print second_set
-third_set = optimize(third_set)
+third_set = get_optimum_score(third_set)
 print third_set
 
+for line in text:
+
+    get_optimum_score(line)
 #counter += counter
 #customer_values = dict((a, len(a)) for a in customers)
 
@@ -299,6 +318,13 @@ for line in file.readlines():
     customer = Customers(items[0].translate(None, whitespace).split(","))
     customers.append(customer)
     products = items[1].translate(None, whitespace).split(",")
+<<<<<<< HEAD:python-challenge.py
+=======
+    campaign_options = lambda dic: [(k, v) for k,v in product(customers, products)]
+
+    campaigns = product(customers, products)
+    print campaign_options
+>>>>>>> 6492d047977f3c4d9c216ff6e208cc2478cd177c:pythonchallenge.py
 
     deals = dict(product(customers, products))
 
@@ -307,9 +333,6 @@ for line in file.readlines():
     deals2 = dict(product(customers, products))
     offers = map(get_sscore, deals2.iteritems())
     print offers
-
-
-
 
 
 

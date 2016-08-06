@@ -1,4 +1,90 @@
 
+from challenge2 import *
+
+class Customers:
+  def __init__(self, name):
+      self.name = name
+      self.id = name
+  def __repr__(self): return repr(self.id)
+
+
+class Products(object):
+  def __init__(self, name, merchant):
+      name = name
+      discount = discount
+      merchant = merchant
+      id = name + "_" + merchant
+  def __repr__(self): return repr(self.id)
+
+
+class Merchants:
+  def __init__(self, name):
+      name = name
+      id = name
+      product_discounts = [Products]
+  ## TO DO - provide function to get/set daily discount product list
+  def __repr__(self): return repr(self.id)
+
+#the dealer determines all the deals and assignments of products to customers
+class Dealer:
+  def __init__(self, name):
+      name = name
+      id = name
+  def __repr__(self): return repr(self.id)
+
+#offers are combinations of products and customers and have a ss determined on construction
+class Offers(object):
+  def __init__(self, customer, product):
+      self.name = [customer, product]
+      self.id = product(customers, products)
+      self.customer = customer
+      self.product = product
+      self.dealer = dealer
+      self.score = dealer.get_score(id)
+  def __repr__(self): return repr(self.id)
+
+class Deals(object):
+  def __init__(self, customer, product):
+      self.name = [customer, product]
+      self.id = product(customers, products)
+      self.customer = customer
+      self.product = product
+      self.dealer = dealer
+      self.score = dealer.get_score(id)
+  def __repr__(self): return repr(self.id)
+
+class Marketer:
+  def __init__(self, name):
+    self.name = name
+    self.customers = [Customers]
+    self.products = [Products]
+    self.all_offers = [Offers]
+    self.optimum_offers = [Offers]
+  def __repr__(self): return repr(self.name)
+ # def set_product(self, product)
+
+
+
+#all_offers = {x: dealer.get_score for x in product_map}
+#class customer(object):
+#    def __init__(self, name, product, score):
+#        self.name = name
+#        self.profession = profession
+#        self.campaign_list = dict(product, campaign)
+
+class Markets:
+    def __init__(self):
+        name = 'one little market'
+        id = name
+        merchants = list(Merchants())
+        products =  list(Products())
+        customers = list(Customers())
+
+        deal_match = self.dealer.get_best_match()
+    def __repr__(self): return repr(self.id)
+
+
+
 
 #1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y) in the customer's name multiplied by 1.5.
 #2. If the number of letters in the product's name is odd then the SS is the number of consonants in the customer's name.
@@ -173,6 +259,8 @@ def get_sscorex(customer, products):
     return
 
 
+
+
 def optimize(n):
 	results = []
 	n = n.strip("\n")
@@ -203,16 +291,22 @@ print third_set
 
 file = open(path, 'r')
 counter = 0;
-
+customers = []
+products = []
+deals = {}
 for line in file.readlines():
     items = line.split(";")
-    customers = items[0].translate(None, whitespace).split(",")
+    customer = Customers(items[0].translate(None, whitespace).split(","))
+    customers.append(customer)
     products = items[1].translate(None, whitespace).split(",")
-    campaign_options = lambda dic: [(k, v) for k,v in product(customers, products)]
-    campaigns = product(customers, products)
-    print campaign_options
 
-    ss_capaigns = map(get_sscore, campaigns)
+    deals = dict(product(customers, products))
+
+    print deals
+    deals = product(customers, products)
+    deals2 = dict(product(customers, products))
+    offers = map(get_sscore, deals2.iteritems())
+    print offers
 
 
 

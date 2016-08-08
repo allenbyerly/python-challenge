@@ -239,10 +239,9 @@ for line in file.readlines():
     print deals
     deals = product(customers, products)
     print deals
-    deals2 = dict(product(customers, products))
-    offers = map(get_sscore, deals)
-    print offers
-
+    deals2 = dict(product(products, customers))
+    #offers = map(get_sscore, deals)
+    print deals2
 
 #    def map_set(n
 print "-----"

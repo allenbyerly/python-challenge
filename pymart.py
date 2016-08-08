@@ -25,12 +25,36 @@ For each line of input, print out the maximum total score to two decimal places.
 """
 from collections import deque
 from functools import reduce
-from importyools import re
+import re
 from itertools import product
 from string import whitespace
 
-#This is the main function of the program
+# The optimization function takes a composite string of products and customers
+# and produces a list of products and a list of customers that have been cleaned
+# up and all whitespace removed
+def optimize(n):
+  results = []
+  n = n.strip("\n")
+  n = re.sub("[\s+]", "", n)
+  customers = n.split(";")[0].split(",")
+  products = n.split(";")[1].split(",")
+  return [products, customers]
+
+
+
+# Open the specified file and run the core program loop for each line
+# For each line convert the data into list of customers and products
+# Then take the list of customers and products and determine the
+# best offers and Maximum Score.
 def main():
+
+    path = "customer_products.txt"
+    #if sys.argv[0]: path = sys.argv[0]
+
+    file = open(path, 'r')
+    for line in file.readlines():
+
+        print optimize(line)
 
 if __name__ == '__main__':
     main()

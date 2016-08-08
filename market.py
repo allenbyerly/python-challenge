@@ -1,13 +1,13 @@
 from collections import deque
 from functools import reduce
-from importyools import re
+import re
 from itertools import product
 from string import whitespace
-from challenge2 import *
 
 class Customers:
   def __init__(self, name):
       self.name = name
+      self.is_even = (len(name))
       self.id = name
   def __repr__(self): return repr(self.id)
 
@@ -67,6 +67,25 @@ class Marketer:
   def __repr__(self): return repr(self.name)
  # def set_product(self, product)
 
+
+  #all_offers = {x: dealer.get_score for x in product_map}
+  #class customer(object):
+  #    def __init__(self, name, product, score):
+  #        self.name = name
+  #        self.profession = profession
+  #        self.campaign_list = dict(product, campaign)
+
+class Markets:
+  def __init__(self):
+      name = 'one little market'
+      id = name
+      merchants = list(Merchants())
+      products =  list(Products())
+      customers = list(Customers())
+
+      deal_match = self.dealer.get_best_match()
+  def __repr__(self): return repr(self.id)
+
 class Campaigns(object):
   def __init__(self, customer, product):
       self.customer = customer
@@ -80,20 +99,12 @@ class Campaigns(object):
   def high_product(self): return self.high_product
   def __repr__(self): return repr([self.name, self.score])
 
-  #all_offers = {x: dealer.get_score for x in product_map}
-  #class customer(object):
-  #    def __init__(self, name, product, score):
-  #        self.name = name
-  #        self.profession = profession
-  #        self.campaign_list = dict(product, campaign)
 
-  class Markets:
-      def __init__(self):
-          name = 'one little market'
-          id = name
-          merchants = list(Merchants())
-          products =  list(Products())
-          customers = list(Customers())
 
-          deal_match = self.dealer.get_best_match()
-      def __repr__(self): return repr(self.id)
+#>>> student_objects = [
+#        Student('john', 'A', 15),
+#        Student('jane', 'B', 12),
+#        Student('dave', 'B', 10),
+#]
+#>>> sorted(student_objects, key=lambda student: student.age)   # sort by age
+#[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]

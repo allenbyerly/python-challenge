@@ -10,7 +10,7 @@ Each day we will get the list of products that are eligible for these special di
 
 If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y) in the customer's name multiplied by 1.5.
 If the number of letters in the product's name is odd then the SS is the number of consonants in the customer's name.
-If the number of letters in the product's name shares any common factors (besides 1) with the number of letters in the customer's name then the SS is multiplied by 1.5.
+If the number  of letters in the product's name shares any common factors (besides 1) with the number of letters in the customer's name then the SS is multiplied by 1.5.
 Your task is to implement a program that assigns each customer a product to be offered in a way that maximizes the combined total SS across all of the chosen offers. Note that there may be a different number of products and customers. You may include code from external libraries as long as you cite the source.
 
 INPUT SAMPLE:
@@ -28,13 +28,6 @@ from functools import reduce
 from importyools import re
 from itertools import product
 from string import whitespace
-
-class Product(object):
-  def __init__(self, name):
-      self.name = name
-  def __repr__(self): return repr(self.name)
-
-
 
 #This is the main function of the program
 def main():

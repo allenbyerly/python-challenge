@@ -31,10 +31,11 @@ class campaign(object):
   def high_product(self): return self.high_product
   def __repr__(self): return repr([self.name, self.score])
 
->>> student_objects = [
-        Student('john', 'A', 15),
-        Student('jane', 'B', 12),
-        Student('dave', 'B', 10),
-]
->>> sorted(student_objects, key=lambda student: student.age)   # sort by age
-[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+#student_objects = [
+#Student('john', 'A', 15),
+#Student('jane', 'B', 12),
+#Student('dave', 'B', 10),
+#]
+#sorted(student_objects, key=lambda student: student.age)
+
+#[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]

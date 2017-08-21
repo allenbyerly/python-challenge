@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD:python-challenge.py
 from challenge2 import *
 
 class Customers:
@@ -85,10 +84,6 @@ class Markets:
     def __repr__(self): return repr(self.id)
 
 
-
-
-=======
->>>>>>> 6492d047977f3c4d9c216ff6e208cc2478cd177c:pythonchallenge.py
 #1. If the number of letters in the product's name is even then the SS is the number of vowels (a, e, i, o, u, y) in the customer's name multiplied by 1.5.
 #2. If the number of letters in the product's name is odd then the SS is the number of consonants in the customer's name.
 #3. If the number of letters in the product's name shares any common factors (besides 1) with the number of letters in the customer's name then the SS is multiplied by 1.5.
@@ -176,7 +171,7 @@ def vcv(x, y):
     if (len(y) % 2 == 0):
         vowels = "aeiouy"
         count = 0
-        x = x.lower()
+    #    x = x.lower()
         for i in x:
             if i in vowels:
                 count +=1
@@ -262,17 +257,12 @@ print third_set
 
 
 
-<<<<<<< HEAD:python-challenge.py
-
-
 def optimize(n):
 	results = []
 	n = n.strip("\n")
 	n = re.sub("[\s+]", "", n)
 	customers = n.split(";")[0].split(",")
 	products = n.split(";")[1].split(",")
-=======
->>>>>>> 6492d047977f3c4d9c216ff6e208cc2478cd177c:pythonchallenge.py
 
 def get_optimum_score(n):
   score = 0
@@ -318,13 +308,11 @@ for line in file.readlines():
     customer = Customers(items[0].translate(None, whitespace).split(","))
     customers.append(customer)
     products = items[1].translate(None, whitespace).split(",")
-<<<<<<< HEAD:python-challenge.py
-=======
+
     campaign_options = lambda dic: [(k, v) for k,v in product(customers, products)]
 
     campaigns = product(customers, products)
     print campaign_options
->>>>>>> 6492d047977f3c4d9c216ff6e208cc2478cd177c:pythonchallenge.py
 
     deals = dict(product(customers, products))
 
